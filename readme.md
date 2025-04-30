@@ -55,7 +55,7 @@ Você verá a mensagem:
 Assembly gerado com sucesso em output.asm
 ```
 
-### 🧪 Rodando os Testes
+## 🧪 Rodando os Testes
 O projeto possui testes automatizados para validar o parser e o gerador de código.
 #### Para executar os testes:
 

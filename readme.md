@@ -2,8 +2,6 @@
 
 Este projeto é um **compilador simples** que interpreta programas escritos na linguagem **Cmd**, constrói uma árvore sintática (AST) e gera **código assembly x86-64**, compilável com `nasm` e `ld`.
 
----
-
 ## 📁 Estrutura do Projeto
 
 - `main.rs` — Função principal do compilador.
@@ -62,4 +60,11 @@ O projeto possui testes automatizados para validar o parser e o gerador de códi
 ```bash
 cargo test
 ```
+
 Os testes estão implementados em parser.rs e codegen.rs, dentro dos blocos #[cfg(test)].
+
+## 👨‍💻 Desenvolvedores ##
+
+- CARLOS ALEXANDRE SILVA DOS SANTOS - 20210025904
+- JOAO VITOR TEIXEIRA BARRETO - 20210094349
+

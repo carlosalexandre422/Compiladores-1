@@ -2,8 +2,6 @@
 
 Este projeto é um **compilador simples** que interpreta programas escritos na linguagem **Cmd**, constrói uma árvore sintática (AST) e gera **código assembly x86-64**, compilável com `nasm` e `ld`.
 
----
-
 ## 📁 Estrutura do Projeto
 
 - `main.rs` — Função principal do compilador.
@@ -22,14 +20,51 @@ Este projeto é um **compilador simples** que interpreta programas escritos na l
 cargo build
 ```
 
-### 2. Run do projeto
+### 2. Escreva seu código Cmd em **texto.txt**
+Crie o arquivo texto.txt com um programa válido da linguagem Cmd. Exemplo:
+
+```bash
+a = 4;
+{
+    if a < 10 {
+        a = 1;
+    } else {
+        a = 0;
+    }
+    return a;
+}
+```
+
+### 3. Execute o compilador
 
 ```bash
 cargo run
 ```
 
-### 2. Run dos testes
+Isso irá:
+
+- Analisar sintaticamente o conteúdo de texto.txt
+- Gerar o código assembly correspondente
+- Salvar o resultado no arquivo output.asm
+
+Você verá a mensagem:
+
+```bash
+Assembly gerado com sucesso em output.asm
+```
+
+## 🧪 Rodando os Testes
+O projeto possui testes automatizados para validar o parser e o gerador de código.
+#### Para executar os testes:
 
 ```bash
 cargo test
 ```
+
+Os testes estão implementados em parser.rs e codegen.rs, dentro dos blocos #[cfg(test)].
+
+## 👨‍💻 Desenvolvedores ##
+
+- CARLOS ALEXANDRE SILVA DOS SANTOS - 20210025904
+- JOAO VITOR TEIXEIRA BARRETO - 20210094349
+

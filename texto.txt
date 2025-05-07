@@ -1,9 +1,22 @@
-a = 4;
-{
-    if a < 10 {
-        a = 1;
-    } else {
-        a = 0;
-    }
-    return a;
+fun fib(n) {
+  var res = 0;
+  if n < 2 {
+    res = 1;
+  } else {
+    res = fib(n - 1) + fib(n - 2);
+  }
+  return res;
+}
+
+fun fatorial(n) {
+  var res = 1;
+  while n > 1 {
+    res = res * n;
+    n = n - 1;
+  }
+  return res;
+}
+
+main {
+  return fib(5) + fatorial(4);
 }

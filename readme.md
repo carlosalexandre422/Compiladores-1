@@ -71,7 +71,7 @@ O projeto possui testes automatizados para validar o parser e o gerador de códi
 ```bash
 cargo test
 ```
-Os testes estão implementados em parser.rs e codegen.rs, dentro dos blocos #[cfg(test)].
+Os testes estão implementados em parser.rs, codegen.rs e main.rs, dentro dos blocos #[cfg(test)].
 
 ## 🐧 Observações
 

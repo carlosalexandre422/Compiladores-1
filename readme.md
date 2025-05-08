@@ -1,14 +1,16 @@
 # 🛠️ Compilador Cmd — Rust + x86 Assembly
 
-Este projeto é um **compilador simples** que interpreta programas escritos na linguagem **Cmd**, constrói uma árvore sintática (AST) e gera **código assembly x86-64**, compilável com `nasm` e `ld`.
+Este projeto é um **compilador simples** para a linguagem **Fun**, que interpreta programas escritos nessa linguagem, constrói uma árvore sintática (AST) e gera **código assembly x86-64**. O código assembly gerado pode ser compilado com `nasm` e `ld` para criar um executável.
 
 ## 📁 Estrutura do Projeto
 
 - `main.rs` — Função principal do compilador.
-- `parser.rs` — Parser recursivo descendente da linguagem Cmd.
+- `parser.rs` — Parser recursivo descendente da linguagem Fun.
 - `codegen.rs` — Gerador de código assembly.
-- `texto.txt` — Arquivo de entrada com o código Cmd.
+- `texto.txt` — Arquivo de entrada com o código Fun.
 - `output.asm` — Arquivo de saída com o código assembly gerado.
+- `output.o` — Arquivo objeto gerado pelo `nasm` para criação do executável.
+- `prog` — Arquivo executável gerado pelo `ld`.
 
 ---
 
@@ -20,18 +22,22 @@ Este projeto é um **compilador simples** que interpreta programas escritos na l
 cargo build
 ```
 
-### 2. Escreva seu código Cmd em **texto.txt**
-Crie o arquivo texto.txt com um programa válido da linguagem Cmd. Exemplo:
+### 2. Escreva seu código Fun em **texto.txt**
+Crie o arquivo texto.txt com um programa válido da linguagem Fun. Exemplo:
 
 ```bash
-a = 4;
-{
-    if a < 10 {
-        a = 1;
-    } else {
-        a = 0;
-    }
-    return a;
+fun fib(n) {
+  var res = 0;
+  if n < 2 {
+    res = 1;
+  } else {
+    res = fib(n - 1) + fib(n - 2);
+  }
+  return res;
+}
+
+main {
+  return fib(6);
 }
 ```
 
@@ -41,18 +47,23 @@ a = 4;
 cargo run
 ```
 
-Isso irá:
+O que irá acontecer:
 
-- Analisar sintaticamente o conteúdo de texto.txt
-- Gerar o código assembly correspondente
-- Salvar o resultado no arquivo output.asm
+- O compilador irá analisar sintaticamente o conteúdo de texto.txt.
+- Gerará o código assembly correspondente em output.asm.
+- Compilará o código assembly usando nasm e ld, criando o executável prog.
 
-Você verá a mensagem:
+Você verá as mensagens:
 
 ```bash
 Assembly gerado com sucesso em output.asm
+Compilando o código assembly...
+Executável gerado com sucesso: prog
 ```
-
+Após isso, você poderá executar o programa com o comando:
+```bash
+./prog
+```
 ## 🧪 Rodando os Testes
 O projeto possui testes automatizados para validar o parser e o gerador de código.
 #### Para executar os testes:
@@ -60,8 +71,18 @@ O projeto possui testes automatizados para validar o parser e o gerador de códi
 ```bash
 cargo test
 ```
+Os testes estão implementados em parser.rs, codegen.rs e main.rs, dentro dos blocos #[cfg(test)].
 
-Os testes estão implementados em parser.rs e codegen.rs, dentro dos blocos #[cfg(test)].
+## 🐧 Observações
+
+Este projeto foi desenvolvido para ser executado em uma distribuição Linux.
+Para gerar o executável prog, o compilador utiliza os seguintes comandos de sistema:
+
+```bash
+nasm -f elf64 output.asm -o output.o  # Gera o arquivo objeto
+ld output.o -o prog                   # Gera o executável
+
+```
 
 ## 👨‍💻 Desenvolvedores ##
 

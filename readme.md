@@ -1,4 +1,4 @@
-# 🛠️ Compilador Cmd — Rust + x86 Assembly
+# 🛠️ Compilador Fun — Rust + x86 Assembly
 
 Este projeto é um **compilador simples** para a linguagem **Fun**, que interpreta programas escritos nessa linguagem, constrói uma árvore sintática (AST) e gera **código assembly x86-64**. O código assembly gerado pode ser compilado com `nasm` e `ld` para criar um executável.
 
